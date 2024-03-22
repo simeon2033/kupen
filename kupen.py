@@ -15,7 +15,7 @@ pushpercentage = 0
 roundtest = 0
 diagnostic = 0
 player2active = False
-rounds = 1000000
+rounds = 1
 roundtest = pushcounter + dealerwincounter + player1wincounter
 
 def dice5total(): # 5 dobbelstenen functie
@@ -441,13 +441,13 @@ print("Dealerwinpercentage", dealerwinpercentage,"%")
 print("")
 print("")
 if diagnostic == 1: # extra outputs voor troubleshooting
-    print("card_1", card_1)
-    print("card_2", card_2)
-    print("card_3", card_3)
-    print("card_4", card_4)
-    print("card_5", card_5)
+    print("p1card_1", p1card_1)
+    print("p1card_2", p1card_2)
+    print("p1card_3", p1card_3)
+    print("p1card_4", p1card_4)
+    print("p1card_5", p1card_5)
     print("player1stay", player1stay)
-    print("card_total", card_total)
+    print("p1card_total", p1card_total)
     print("player1win:", player1win)
     print("playerlost:", playerlost)
     print("dcard_1", dcard_1)
