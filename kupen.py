@@ -17,7 +17,7 @@ diagnostic = 0
 player1money = 0
 player1inzet = 10
 player2active = False
-rounds = 10000
+rounds = 10000000
 roundtest = pushcounter + dealerwincounter + player1wincounter
 
 def dice5total(): # 5 dobbelstenen functie
@@ -285,8 +285,7 @@ while roundnm < rounds: # hoeveelheid rondes
                                             dealerstay = 1
                                         if p1card_total > 23: # waneer moet de speler stoppen
                                             player1stay = 1
-                                    
-                                            
+
                                         if player1stay == 0 or dealerstay == 0: # kaart 11
                                             dice_total = dice5total()
                                             if dice_total <= 15:
@@ -330,7 +329,7 @@ while roundnm < rounds: # hoeveelheid rondes
                                                         p1card_12 = random.randint(5, 9)
                                                     if dealerstay == 0:
                                                         dcard_12 = random.randint(5, 9)
-   
+
     p1card_total = p1card_totalfunc() # kaarten totaal speler 1
     dcard_total = dcard_totalfunc() # kaarten totaal dealer
    
