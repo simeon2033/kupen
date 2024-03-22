@@ -15,17 +15,19 @@ dealerkupocounter = 0
 dealerkupercounter = 0
 dealerwincounter = 0
 dealerwinpercentage = 0
-pushcounter = 0
-pushpercentage = 0
+p1pushcounter = 0
+p2pushcounter = 0
+p1pushpercentage = 0
+p2pushpercentage = 0
 roundtest = 0
 diagnostic = 0
 player1money = 0
 player1inzet = 10
 player2money = 0
 player2inzet = 0
-player2active = False
+player2active = True
 rounds = 10000
-roundtest = pushcounter + dealerwincounter + player1wincounter
+roundtest = p1pushcounter + dealerwincounter + player1wincounter + p2pushcounter
 
 def dice5total(): # 5 dobbelstenen functie
     return random.randint(1,6) + random.randint(1,6) + random.randint(1,6) + random.randint(1,6) + random.randint(1,6)
@@ -48,10 +50,13 @@ while roundnm < rounds: # hoeveelheid rondes
     player2stay = 0
     player2lost = 0
     player2win = 0
-    dealerlost = 0
-    dealerwin = 0
+    dealerlostfrp1 = 0
+    dealerlostfrp2 = 0
+    dealerwinfrp1 = 0
+    dealerwinfrp2 = 0
     dealerstay = 0
-    push = 0
+    pushp1 = 0
+    pushp2 = 0
    
     dice_total = dice5total() # kaart 1
     if dice_total <= 15:
@@ -105,7 +110,7 @@ while roundnm < rounds: # hoeveelheid rondes
         p1card_total = p1card_totalfunc()
         p2card_total = p2card_totalfunc()
         dcard_total = dcard_totalfunc()
-        if dcard_total > 23 and dcard_total > p1card_total: # wanneer moet de dealer stoppen
+        if p1card_total > 26 or dcard_total > 23 and dcard_total > p1card_total: # wanneer moet de dealer stoppen
             dealerstay = 1
         if p1card_total > 23: # waneer moet de speler stoppen
             player1stay = 1
@@ -137,7 +142,7 @@ while roundnm < rounds: # hoeveelheid rondes
             p1card_total = p1card_totalfunc()
             p2card_total = p2card_totalfunc()
             dcard_total = dcard_totalfunc()
-            if dcard_total > 23 and dcard_total > p1card_total: # wanneer moet de dealer stoppen
+            if p1card_total > 26 or dcard_total > 23 and dcard_total > p1card_total: # wanneer moet de dealer stoppen
                 dealerstay = 1
             if p1card_total > 23: # waneer moet de speler stoppen
                 player1stay = 1
@@ -169,7 +174,7 @@ while roundnm < rounds: # hoeveelheid rondes
                 p1card_total = p1card_totalfunc()
                 p2card_total = p2card_totalfunc()
                 dcard_total = dcard_totalfunc()
-                if dcard_total > 23 and dcard_total > p1card_total: # wanneer moet de dealer stoppen
+                if p1card_total > 26 or dcard_total > 23 and dcard_total > p1card_total: # wanneer moet de dealer stoppen
                     dealerstay = 1
                 if p1card_total > 23: # waneer moet de speler stoppen
                     player1stay = 1
@@ -201,7 +206,7 @@ while roundnm < rounds: # hoeveelheid rondes
                     p1card_total = p1card_totalfunc()
                     p2card_total = p2card_totalfunc()
                     dcard_total = dcard_totalfunc()
-                    if dcard_total > 23 and dcard_total > p1card_total: # wanneer moet de dealer stoppen
+                    if p1card_total > 26 or dcard_total > 23 and dcard_total > p1card_total: # wanneer moet de dealer stoppen
                         dealerstay = 1
                     if p1card_total > 23: # waneer moet de speler stoppen
                         player1stay = 1
@@ -233,7 +238,7 @@ while roundnm < rounds: # hoeveelheid rondes
                         p1card_total = p1card_totalfunc()
                         p2card_total = p2card_totalfunc()
                         dcard_total = dcard_totalfunc()
-                        if dcard_total > 23 and dcard_total > p1card_total: # wanneer moet de dealer stoppen
+                        if p1card_total > 26 or dcard_total > 23 and dcard_total > p1card_total: # wanneer moet de dealer stoppen
                             dealerstay = 1
                         if p1card_total > 23: # waneer moet de speler stoppen
                             player1stay = 1
@@ -265,7 +270,7 @@ while roundnm < rounds: # hoeveelheid rondes
                             p1card_total = p1card_totalfunc()
                             p2card_total = p2card_totalfunc()
                             dcard_total = dcard_totalfunc()
-                            if dcard_total > 23 and dcard_total > p1card_total: # wanneer moet de dealer stoppen
+                            if p1card_total > 26 or dcard_total > 23 and dcard_total > p1card_total: # wanneer moet de dealer stoppen
                                 dealerstay = 1
                             if p1card_total > 23: # waneer moet de speler stoppen
                                 player1stay = 1
@@ -297,7 +302,7 @@ while roundnm < rounds: # hoeveelheid rondes
                                 p1card_total = p1card_totalfunc()
                                 p2card_total = p2card_totalfunc()
                                 dcard_total = dcard_totalfunc()            
-                                if dcard_total > 23 and dcard_total > p1card_total: # wanneer moet de dealer stoppen
+                                if p1card_total > 26 or dcard_total > 23 and dcard_total > p1card_total: # wanneer moet de dealer stoppen
                                     dealerstay = 1
                                 if p1card_total > 23: # waneer moet de speler stoppen
                                     player1stay = 1
@@ -329,7 +334,7 @@ while roundnm < rounds: # hoeveelheid rondes
                                     p1card_total = p1card_totalfunc()
                                     p2card_total = p2card_totalfunc()
                                     dcard_total = dcard_totalfunc()            
-                                    if dcard_total > 23 and dcard_total > p1card_total: # wanneer moet de dealer stoppen
+                                    if p1card_total > 26 or dcard_total > 23 and dcard_total > p1card_total: # wanneer moet de dealer stoppen
                                         dealerstay = 1
                                     if p1card_total > 23: # waneer moet de speler stoppen
                                         player1stay = 1
@@ -361,7 +366,7 @@ while roundnm < rounds: # hoeveelheid rondes
                                         p1card_total = p1card_totalfunc()
                                         p2card_total = p2card_totalfunc()
                                         dcard_total = dcard_totalfunc()
-                                        if dcard_total > 23 and dcard_total > p1card_total: # wanneer moet de dealer stoppen
+                                        if p1card_total > 26 or dcard_total > 23 and dcard_total > p1card_total: # wanneer moet de dealer stoppen
                                             dealerstay = 1
                                         if p1card_total > 23: # waneer moet de speler stoppen
                                             player1stay = 1
@@ -393,7 +398,7 @@ while roundnm < rounds: # hoeveelheid rondes
                                             p1card_total = p1card_totalfunc()
                                             p2card_total = p2card_totalfunc()
                                             dcard_total = dcard_totalfunc()            
-                                            if dcard_total > 23 and dcard_total > p1card_total: # wanneer moet de dealer stoppen
+                                            if p1card_total > 26 or dcard_total > 23 and dcard_total > p1card_total: # wanneer moet de dealer stoppen
                                                 dealerstay = 1
                                             if p1card_total > 23: # waneer moet de speler stoppen
                                                 player1stay = 1
@@ -431,243 +436,379 @@ while roundnm < rounds: # hoeveelheid rondes
     if p1card_1 == 1 or p1card_1 + p1card_2 == 26: # checken of speler 1 kupo heeft
         print("kupo player 1")
         player1kupocounter = player1kupocounter + 1
-        player1money = player1money + player1inzet * 3
+        player1money = player1money + player1inzet * 0.75
         player1win = 1
-        dealerlost = 1
+        dealerlostfrp1 = 1
     if p2card_1 == 1 or p2card_1 + p2card_2 == 26: # checken of speler 2 kupo heeft
         print("kupo player 2")
         player2kupocounter = player2kupocounter + 1
-        player2money = player2money + player2inzet * 3
+        player2money = player2money + player2inzet * 0.75
         player2win = 1
-        dealerlost = 1
+        dealerlostfrp2 = 1
     if dcard_1 == 1 or dcard_1 + dcard_2 == 26: # checken of dealer kupo heeft
         print("kupo dealer")
         dealerkupocounter = dealerkupocounter + 1
         player1money = player1money - player1inzet
-        dealerwin = 1
+        dealerwinfrp1 = 1
+        dealerwinfrp2 = 1
         player1lost = 1
-    elif p1card_1 + p1card_2 == 14: # checken of speler 1 Kuper heeft
+    if player1win == 1 and dealerlostfrp1 == 1 and dealerwinfrp1 == 1 and player1lost == 1:
+        pushp1 = 1
+    if player2win == 1 and dealerlostfrp2 == 1 and dealerwinfrp2 == 1 and player2lost == 1:
+        pushp2
+    if p1card_1 + p1card_2 == 14: # checken of speler 1 Kuper heeft
         print("Kuper player 1")
         player1kupercounter = player1kupercounter + 1
         player1money = player1money - player1inzet
         player1lost = 1
-        dealerwin = 1
-        if p2card_1 + p1card_2 == 14: # checken of speler 2 Kuper heeft
-            print("Kuper player 2")
-            player2kupercounter = player2kupercounter + 1
-            player2money = player2money - player2inzet
-            player2lost = 1
-            dealerwin = 1
-    elif dcard_1 + dcard_2 == 14 and dealerwin == 0: # checken of dealer Kuper heeft
+        dealerwinfrp1 = 1
+    if p2card_1 + p1card_2 == 14: # checken of speler 2 Kuper heeft
+        print("Kuper player 2")
+        player2kupercounter = player2kupercounter + 1
+        player2money = player2money - player2inzet
+        player2lost = 1
+        dealerwinfrp2 = 1
+    if dcard_1 + dcard_2 == 14 and dealerwinfrp1 == 0 or dealerwinfrp2 == 0: # checken of dealer Kuper heeft
         print("Kuper dealer")
         dealerkupercounter = dealerkupercounter + 1
-        player1money = player1money + player1inzet * 2.5
-        dealerlost = 1
+        player1money = player1money + player1inzet * 0.25
+        dealerlostfrp1 = 1
+        dealerlostfrp2
         player1win = 1
         if player2active == True:
             player2win = 1
-    elif p1card_total > 26: # checken of speler 1 bust is
+    if p1card_total > 26: # checken of speler 1 bust is
         print("bust player 1")
         player1bustcounter = player1bustcounter + 1
         player1money = player1money - player1inzet
         player1lost = 1
-        dealerwin = 1
-        if p2card_total > 26: # checken of speler 2 bust is
-            print("bust player 2")
-            player2bustcounter = player2bustcounter + 1
-            player2money = player2money - player2inzet
-            player2lost = 1
-            dealerwin = 1
-    elif dcard_total > 26: # checken of dealer bust is
+        dealerwinfrp1 = 1
+    if p2card_total > 26: # checken of speler 2 bust is
+        print("bust player 2")
+        player2bustcounter = player2bustcounter + 1
+        player2money = player2money - player2inzet
+        player2lost = 1
+        dealerwinfrp2 = 1
+    if dcard_total > 26: # checken of dealer bust is
         print("bust dealer")
         dealerbustcounter = dealerbustcounter + 1
-        player1money = player1money + player1inzet
-        dealerlost = 1
+        player1money = player1money + player1inzet * 0.25
+        if player2active == True:
+            player2money = player2money + player2inzet * 0.25
+        dealerlostfrp1 = 1
+        dealerwinfrp2 = 1
         player1win = 1
         if player2active == True:
             player2win = 1
-    else: # wat gebeurt er als niemand kuper, kupo heeft of bust is
-        if player2active == False:
-            if p1card_total < 14 and dcard_total < 14: # checken wie er verder van 14 af zit
-                if 14 - p1card_total < 14 - dcard_total:
-                    player1win = 1
-                    dealerlost = 1
-                    player1money = player1money + player1inzet
-                elif 14 - p1card_total > 14 - dcard_total:
-                    dealerwin = 1
-                    player1lost = 1
-                    player1money = player1money - player1inzet
-            elif p1card_total > 14 and dcard_total > 14:
-                if p1card_total - 14 > dcard_total - 14:
-                    player1win = 1
-                    dealerlost = 1
-                    player1money = player1money + player1inzet
-                elif p1card_total - 14 < dcard_total - 14:
-                    dealerwin = 1
-                    player1lost = 1
-                    player1money = player1money - player1inzet
-            elif p1card_total > 14 and dcard_total < 14:
-                if p1card_total - 14 > 14 - dcard_total:
-                    player1win = 1
-                    dealerlost = 1
-                    player1money = player1money + player1inzet
-                elif p1card_total - 14 < 14 - dcard_total:
-                    dealerwin = 1
-                    player1lost = 1
-                    player1money = player1money - player1inzet
-                else:
-                    player1win = 1
-                    dealerwin = 1
-            elif p1card_total < 14 and dcard_total > 14:
-                if 14 - p1card_total > dcard_total - 14:
-                    player1win = 1
-                    dealerlost = 1
-                    player1money = player1money + player1inzet
-                elif 14 - p1card_total < dcard_total - 14:
-                    dealerwin = 1
-                    player1lost = 1
-                    player1money = player1money - player1inzet
-                else:
-                    player1win = 1
-                    dealerwin = 1
-            elif p1card_total == 14:
-                player1lost = 1
-                dealerwin = 1
-                player1money = player1money - player1inzet
-            elif dcard_total == 14:
+    if player2active == False and dealerlostfrp1 == 0 and dealerwinfrp1 == 0 and player1win == 0 and player1lost == 0: # wat gebeurt er als niemand kuper, kupo heeft of bust is
+        if p1card_total < 14 and dcard_total < 14: # checken wie er verder van 14 af zit
+            if 14 - p1card_total < 14 - dcard_total:
                 player1win = 1
-                dealerlost = 1
-                player1money = player1money + player1inzet
+                dealerlostfrp1 = 1
+                player1money = player1money + player1inzet * 0.25
+            elif 14 - p1card_total > 14 - dcard_total:
+                dealerwin = 1
+                player1lostfrp1 = 1
+                player1money = player1money - player1inzet
+        elif p1card_total > 14 and dcard_total > 14:
+            if p1card_total - 14 > dcard_total - 14:
+                player1win = 1
+                dealerlostfrp1 = 1
+                player1money = player1money + player1inzet * 0.25
+            elif p1card_total - 14 < dcard_total - 14:
+                dealerwinfrp1 = 1
+                player1lost = 1
+                player1money = player1money - player1inzet
+        elif p1card_total > 14 and dcard_total < 14:
+            if p1card_total - 14 > 14 - dcard_total:
+                player1win = 1
+                dealerlostfrp1 = 1
+                player1money = player1money + player1inzet * 0.25
+            elif p1card_total - 14 < 14 - dcard_total:
+                dealerwinfrp1 = 1
+                player1lost = 1
+                player1money = player1money - player1inzet
+            else:
+                pushp1 = 1
+        elif p1card_total < 14 and dcard_total > 14:
+            if 14 - p1card_total > dcard_total - 14:
+                player1win = 1
+                dealerlostfrp1 = 1
+                player1money = player1money + player1inzet * 0.25
+            elif 14 - p1card_total < dcard_total - 14:
+                dealerwinfrp1 = 1
+                player1lost = 1
+                player1money = player1money - player1inzet
+            else:
+                pushp1 = 1
+        elif p1card_total == 14:
+            player1lost = 1
+            dealerwinfrp1 = 1
+            player1money = player1money - player1inzet
+        elif dcard_total == 14:
+            player1win = 1
+            dealerlostfrp1 = 1
+            player1money = player1money + player1inzet * 0.25
 
         if player2active == True:
             if p1card_total < 14 and dcard_total < 14 and p2card_total < 14: # checken wie er verder van 14 af zit
                 if 14 - p1card_total < 14 - dcard_total:
                     player1win = 1
-                    dealerlost = 1
-                    player1money = player1money + player1inzet
+                    dealerlostfrp1 = 1
+                    player1money = player1money + player1inzet * 0.25
                 if 14 - p2card_total < 14 - dcard_total:
                     player2win = 1
-                    dealerlost = 1
-                    player2money = player2money + player2inzet
+                    dealerlostfrp2 = 1
+                    player2money = player2money + player2inzet * 0.25 
                 if 14 - p1card_total > 14 - dcard_total:
-                    dealerwin = 1
+                    dealerwinfrp1 = 1
                     player1lost = 1
                     player1money = player1money - player1inzet
                 if 14 - p2card_total > 14 - dcard_total:
-                    dealerwin = 1
+                    dealerwinfrp2 = 1
                     player2lost = 1
                     player2money = player2money - player2inzet
+                if 14 - p1card_total == 14 - dcard_total or 14 - p2card_total == 14 - dcard_total:
+                    player1win = 1
+                    player2win = 1
+                    dealerwinfrp1 = 1
+                    dealerwinfrp2 = 1
             elif p1card_total > 14 and dcard_total > 14 and p2card_total > 14:
                 if p1card_total - 14 > dcard_total - 14:
                     player1win = 1
-                    dealerlost = 1
-                    player1money = player1money + player1inzet
+                    dealerlostfrp1 = 1
+                    player1money = player1money + player1inzet * 0.25
                 if p2card_total - 14 > dcard_total - 14:
                     player2win = 1
-                    dealerlost = 1
-                    player2money = player2money + player2inzet
+                    dealerlostfrp2 = 1
+                    player2money = player2money + player2inzet * 0.25
                 if p1card_total - 14 < dcard_total - 14:
-                    dealerwin = 1
+                    dealerwinfrp1 = 1
                     player1lost = 1
                     player1money = player1money - player1inzet
                 if p2card_total - 14 < dcard_total - 14:
-                    dealerwin = 1
+                    dealerwinfrp2 = 1
                     player2lost = 1
                     player2money = player2money - player2inzet
+                if p1card_total - 14 == dcard_total - 14 or p2card_total - 14 == dcard_total - 14:
+                    player1win = 1
+                    player2win = 1
+                    dealerwinfrp1 = 1
+                    dealerwinfrp2 = 1
             elif p1card_total > 14 and dcard_total < 14 and p2card_total < 14:
                 if p1card_total - 14 > 14 - dcard_total:
                     player1win = 1
-                    dealerlost = 1
-                    player1money = player1money + player1inzet
+                    dealerlostfrp1 = 1
+                    player1money = player1money + player1inzet * 0.25
                 if 14 - p2card_total < 14 - dcard_total:
                     player2win = 1
-                    dealerlost = 1
-                    player2money = player2money + player2inzet
+                    dealerlostfrp2 = 1
+                    player2money = player2money + player2inzet * 0.25
                 if 14 - p2card_total > 14 - dcard_total:
-                    dealerwin = 1
+                    dealerwinfrp2 = 1
                     player2lost = 1
                     player2money = player2money - player2inzet
                 if p1card_total - 14 < 14 - dcard_total:
-                    dealerwin = 1
+                    dealerwinfrp1 = 1
                     player1lost = 1
                     player1money = player1money - player1inzet
-                else:
+                if p1card_total - 14 == 14 - dcard_total or 14 - p2card_total == 14 - dcard_total:
                     player1win = 1
                     player2win = 1
-                    dealerwin = 1
+                    dealerwinfrp1 = 1
+                    dealerwinfrp2 = 1
             elif p1card_total < 14 and dcard_total > 14 and p2card_total < 14:
                 if 14 - p1card_total > dcard_total - 14:
                     player1win = 1
-                    dealerlost = 1
-                    player1money = player1money + player1inzet
+                    dealerlostfrp1 = 1
+                    player1money = player1money + player1inzet * 0.25
                 if p2card_total - 14 > 14 - dcard_total:
                     player2win = 1
-                    dealerlost = 1
-                    player2money = player2money + player2inzet
-                elif 14 - p1card_total < dcard_total - 14:
-                    dealerwin = 1
+                    dealerlostfrp2 = 1
+                    player2money = player2money + player2inzet * 0.25
+                if 14 - p1card_total < dcard_total - 14:
+                    dealerwinfrp1 = 1
                     player1lost = 1
                     player1money = player1money - player1inzet
                 if p2card_total - 14 < 14 - dcard_total:
-                    dealerwin = 1
+                    dealerwinfrp2 = 1
                     player2lost = 1
                     player2money = player2money - player2inzet
-                else:
+                if 14 - p1card_total == dcard_total - 14 or p2card_total - 14 == 14 - dcard_total:
                     player1win = 1
                     player2win = 1
-                    dealerwin = 1
-                    # hier de andere 2 uitkomsten invoegen:
+                    dealerwinfrp1 = 1
+                    dealerwinfrp2 = 1
+            elif p1card_total < 14 and dcard_total > 14 and p2card_total > 14:
+                if 14 - p1card_total > dcard_total - 14:
+                    player1win = 1
+                    dealerlostfrp1 = 1
+                    player1money = player1money + player1inzet * 0.25
+                if p2card_total - 14 > dcard_total - 14:
+                    player2win = 1
+                    dealerlostfrp2 = 1
+                    player2money = player2money + player2inzet * 0.25
+                if 14 - p1card_total < dcard_total - 14:
+                    dealerwinfrp1 = 1
+                    player1lost = 1
+                    player1money = player1money - player1inzet
+                if p2card_total - 14 < dcard_total - 14:
+                    dealerwinfrp2 = 1
+                    player2lost = 1
+                    player2money = player2money - player2inzet
+                if 14 - p1card_total == dcard_total - 14 or p2card_total - 14 == dcard_total - 14:
+                    player1win = 1
+                    player2win = 1
+                    dealerwinfrp1 = 1
+                    dealerwinfrp2 = 1
+            elif p1card_total < 14 and dcard_total < 14 and p2card_total > 14:
+                if 14 - p1card_total > 14 - dcard_total:
+                    player1win = 1
+                    dealerlostfrp1 = 1
+                    player1money = player1money + player1inzet * 0.25
+                if p2card_total - 14 > 14 - dcard_total:
+                    player2win = 1
+                    dealerlostfrp2 = 1
+                    player2money = player2money + player2inzet * 0.25
+                if 14 - p1card_total < 14 - dcard_total:
+                    dealerwinfrp1 = 1
+                    player1lost = 1
+                    player1money = player1money - player1inzet
+                if p2card_total - 14 < 14 - dcard_total:
+                    player2lost = 1
+                    dealerwinfrp2 = 1
+                    player2money = player2money - player2inzet
+                if 14 - p1card_total == dcard_total - 14 or p2card_total - 14 == dcard_total - 14:
+                    player1win = 1
+                    player2win = 1
+                    dealerwinfrp1 = 1
+                    dealerwinfrp2 = 1
+            elif p1card_total > 14 and dcard_total < 14 and p2card_total > 14:
+                if p1card_total - 14 > 14 - dcard_total:
+                    player1win = 1
+                    dealerlostfrp1 = 1
+                    player1money = player1money + player1inzet * 0.25
+                if p2card_total - 14 > 14 - dcard_total:
+                    player2win = 1
+                    dealerlostfrp2 = 1
+                    player2money = player2money + player2inzet * 0.25
+                if p1card_total - 14 < 14 - dcard_total:
+                    dealerwinfrp1 = 1
+                    player1lost = 1
+                    player1money = player1money - player1inzet
+                if p2card_total - 14 < 14 - dcard_total:
+                    player2lost = 1
+                    dealerwinfrp2 = 1
+                    player2money = player2money - player2inzet
+                if 14 - p1card_total == dcard_total - 14 or p2card_total - 14 == dcard_total - 14:
+                    player1win = 1
+                    player2win = 1
+                    dealerwinfrp1 = 1
+                    dealerwinfrp2 = 1
+            elif p1card_total > 14 and dcard_total > 14 and p2card_total < 14:
+                if p1card_total - 14 > dcard_total - 14:
+                    player1win = 1
+                    dealerlostfrp1 = 1
+                    player1money = player1money + player1inzet * 0.25
+                if p2card_total - 14 > 14 - dcard_total:
+                    player2win = 1
+                    dealerlostfrp2 = 1
+                    player2money = player2money + player2inzet * 0.25
+                if p1card_total - 14 < dcard_total - 14:
+                    dealerwinfrp1 = 1
+                    player1lost = 1
+                    player1money = player1money - player1inzet
+                if p2card_total - 14 < 14 - dcard_total:
+                    dealerwinfrp2 = 1
+                    player2lost = 1
+                    player2money = player2money - player2inzet
+                if 14 - p1card_total == dcard_total - 14 or p2card_total - 14 == dcard_total - 14:
+                    player1win = 1
+                    player2win = 1
+                    dealerwinfrp1 = 1
+                    dealerwinfrp2 = 1
+
             if p1card_total == 14:
                 player1lost = 1
-                dealerwin = 1
+                dealerwinfrp1 = 1
                 player1money = player1money - player1inzet
             if p2card_total == 14:
                 player2lost = 1
-                dealerwin = 1
-            elif dcard_total == 14:
+                dealerwinfrp2 = 1
+                player2money = player2money - player2inzet
+            if dcard_total == 14:
                 player1win = 1
-                dealerlost = 1
-                player1money = player1money + player1inzet
+                dealerlostfrp1 = 1
+                dealerlostfrp2 = 1
+                player1money = player1money + player1inzet * 0.25
+                player2money = player2money + player2inzet * 0.25
        
     #wie wint?
     # hier ff 2 speler wincheck inplementeren
-    if player1win == 1 and dealerwin == 1 or player1lost == 1 and dealerlost == 1 or p1card_total == dcard_total:
-        print("push")
-        pushcounter = pushcounter + 1
-    elif dealerwin == 1 and player1lost == 1:
-        print("Dealer Wins!")
+    if pushp1 == 1:
+        print("pushp1")
+        p1pushcounter = p1pushcounter + 1
+    elif dealerwinfrp1 == 1 and player1lost == 1:
+        print("Dealer Wins from player 1!")
         dealerwincounter = dealerwincounter + 1
-    elif player1win == 1 and dealerlost == 1:
-        print("Player Wins!")
+    elif player1win == 1 and dealerlostfrp1 == 1:
+        print("Player 1 Wins!")
         player1wincounter = player1wincounter + 1
+    if player2active == True:
+        if pushp2 == 1:
+            print("pushp2")
+            p2pushcounter = p2pushcounter + 1
+        elif dealerwinfrp2 == 1 and player2lost == 1:
+            print("Dealer Wins from player 2!")
+            dealerwincounter = dealerwincounter + 1
+        elif player2win == 1 and dealerlostfrp2 == 1:
+            print("Player 2 Wins!")
+            player2wincounter = player2wincounter + 1
 
 #conclusies/output
-pushpercentage = round(pushcounter / rounds * 100, 2) # percentages uitrekenen
+p1pushpercentage = round(p1pushcounter / rounds * 100, 2) # percentages uitrekenen
+p2pushpercentage = round(p2pushcounter / rounds * 100, 2)
 player1winpercentage = round(player1wincounter / rounds * 100, 2)
+player2winpercentage = round(player2wincounter / rounds * 100, 2)
 dealerwinpercentage = round(dealerwincounter / rounds * 100, 2)
-lossperround = player1money / rounds
-roundtest = player1wincounter + dealerwincounter + pushcounter    
+p1lossperround = player1money / rounds
+p2lossperround = player2money / rounds
+roundtest = player1wincounter + dealerwincounter + p1pushcounter + p2pushcounter
 print("")
 print("Player1bustcounter:", player1bustcounter)
 print("Player1kupocounter:", player1kupocounter)
 print("Player1kupercounter:", player1kupercounter)
 print("")
+if player2active == True:
+    print("Player2bustcounter:", player2bustcounter)
+    print("Player2kupocounter:", player2kupocounter)
+    print("Player2kupercounter:", player2kupercounter)
+    print("")
 print("Dealerbustcounter:", dealerbustcounter)
 print("Dealerkupocounter:", dealerkupocounter)
 print("Dealerkupercounter:", dealerkupercounter)
 print("")
-print("pushcounter:", pushcounter)
+print("p1pushcounter:", p1pushcounter)
 print("Player 1 Wins:", player1wincounter)
+if player2active == True:
+    print("p2pushcounter:", p2pushcounter)
+    print("Player 2 Wins:", player2wincounter)
 print("Dealer Wins:", dealerwincounter)
 print("")
 print("")
-print("pushpercentage", pushpercentage,"%")
+print("p1pushpercentage", p1pushpercentage,"%")
 print("Player1winpercentage", player1winpercentage,"%")
+if player2active == True:
+    print("p2pushpercentage:", p2pushpercentage,"%")
+    print("Player2winpercentage", player2winpercentage,"%")
 print("Dealerwinpercentage", dealerwinpercentage,"%")
 print("")
 print("")
-print("player1money", player1money)
-print("average loss per round", lossperround)
+print("player1money:", player1money)
+print("average loss per round p1", p1lossperround)
+if player2active == True:
+    print("player2money:", player2money)
+    print("average loss per round p2", p2lossperround)
 if diagnostic == 1: # extra outputs voor troubleshooting
     print("p1card_1", p1card_1)
     print("p1card_2", p1card_2)
@@ -678,6 +819,16 @@ if diagnostic == 1: # extra outputs voor troubleshooting
     print("p1card_total", p1card_total)
     print("player1win:", player1win)
     print("player1lost:", player1lost)
+    if player2active == True:
+        print("p2card_1", p2card_1)
+        print("p2card_2", p2card_2)
+        print("p2card_3", p2card_3)
+        print("p2card_4", p2card_4)
+        print("p2card_5", p2card_5)
+        print("player2stay", player2stay)
+        print("p2card_total", p2card_total)
+        print("player2win:", player2win)
+        print("player2lost:", player2lost)
     print("dcard_1", dcard_1)
     print("dcard_2", dcard_2)
     print("dcard_3", dcard_3)
@@ -685,6 +836,9 @@ if diagnostic == 1: # extra outputs voor troubleshooting
     print("dcard_5", dcard_5)
     print("dealerstay", dealerstay)
     print("dcard_total", dcard_total)
-    print("dealerwin:", dealerwin)
-    print("dealerlost:", dealerlost)
+    print("dealerwinfrp1:", dealerwinfrp1)
+    print("dealerlostfrp1:", dealerlostfrp1)
+    if player2active == True:
+        print("dealerwinfrp2:", dealerwinfrp2)
+        print("dealerlostfrp2:", dealerlostfrp2)
     print("round test:", roundtest)
