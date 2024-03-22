@@ -13,9 +13,9 @@ dealerwinpercentage = 0
 pushcounter = 0
 pushpercentage = 0
 roundtest = 0
-diagnostic = 1
+diagnostic = 0
 player2active = False
-rounds = 100
+rounds = 1000000
 roundtest = pushcounter + dealerwincounter + player1wincounter
 
 def dice5total(): # 5 dobbelstenen functie
@@ -109,23 +109,23 @@ while roundnm < rounds: # hoeveelheid rondes
         if p1card_total > 23: # waneer moet de speler stoppen
             player1stay = 1
        
-            if player1stay == 0 or dealerstay == 0: # kaart 4
-                dice_total = dice5total()
-                if dice_total <= 15:
-                    if player1stay == 0:
-                        p1card_4 = random.randint(1, 4)
-                    if dealerstay == 0:
-                        dcard_4 = random.randint(1, 4)
-                elif dice_total >= 20:
-                    if player1stay == 0:
-                        p1card_4 = random.randint(10, 13)
-                    if dealerstay == 0:
-                        dcard_4 = random.randint(10, 13)
-                else:
-                    if player1stay == 0:
-                        p1card_4 = random.randint(5, 9)
-                    if dealerstay == 0:
-                        dcard_4 = random.randint(5, 9)
+        if player1stay == 0 or dealerstay == 0: # kaart 4
+            dice_total = dice5total()
+            if dice_total <= 15:
+                if player1stay == 0:
+                    p1card_4 = random.randint(1, 4)
+                if dealerstay == 0:
+                    dcard_4 = random.randint(1, 4)
+            elif dice_total >= 20:
+                if player1stay == 0:
+                    p1card_4 = random.randint(10, 13)
+                if dealerstay == 0:
+                    dcard_4 = random.randint(10, 13)
+            else:
+                if player1stay == 0:
+                    p1card_4 = random.randint(5, 9)
+                if dealerstay == 0:
+                    dcard_4 = random.randint(5, 9)
                        
             p1card_total = p1card_totalfunc()
             dcard_total = dcard_totalfunc()
@@ -134,23 +134,23 @@ while roundnm < rounds: # hoeveelheid rondes
             if p1card_total > 23: # waneer moet de speler stoppen
                 player1stay = 1
            
-                if player1stay == 0 or dealerstay == 0: # kaart 5
-                    dice_total = dice5total()
-                    if dice_total <= 15:
-                        if player1stay == 0:
-                            p1card_5 = random.randint(1, 4)
-                        if dealerstay == 0:
-                            dcard_5 = random.randint(1, 4)
-                    elif dice_total >= 20:
-                        if player1stay == 0:
-                            p1card_5 = random.randint(10, 13)
-                        if dealerstay == 0:
-                            dcard_5 = random.randint(10, 13)
-                    else:
-                        if player1stay == 0:
-                            p1card_5 = random.randint(5, 9)
-                        if dealerstay == 0:    
-                            dcard_5 = random.randint(5, 9)
+            if player1stay == 0 or dealerstay == 0: # kaart 5
+                dice_total = dice5total()
+                if dice_total <= 15:
+                    if player1stay == 0:
+                        p1card_5 = random.randint(1, 4)
+                    if dealerstay == 0:
+                        dcard_5 = random.randint(1, 4)
+                elif dice_total >= 20:
+                    if player1stay == 0:
+                        p1card_5 = random.randint(10, 13)
+                    if dealerstay == 0:
+                        dcard_5 = random.randint(10, 13)
+                else:
+                    if player1stay == 0:
+                        p1card_5 = random.randint(5, 9)
+                    if dealerstay == 0:    
+                        dcard_5 = random.randint(5, 9)
                
                 p1card_total = p1card_totalfunc()
                 dcard_total = dcard_totalfunc()
@@ -159,23 +159,23 @@ while roundnm < rounds: # hoeveelheid rondes
                 if p1card_total > 23: # waneer moet de speler stoppen
                     player1stay = 1
                
-                    if player1stay == 0 or dealerstay == 0: # kaart 6
-                        dice_total = dice5total()
-                        if dice_total <= 15:
-                            if player1stay == 0:
-                                p1card_6 = random.randint(1, 4)
-                            if dealerstay == 0:
-                                dcard_6 = random.randint(1, 4)
-                        elif dice_total >= 20:
-                            if player1stay == 0:
-                                p1card_6 = random.randint(10, 13)
-                            if dealerstay == 0:
-                                dcard_6 = random.randint(10,13)
-                        else:
-                            if player1stay == 0:
-                                p1card_6 = random.randint(5, 9)
-                            if dealerstay == 0:
-                                dcard_6 = random.randint(5, 9)
+                if player1stay == 0 or dealerstay == 0: # kaart 6
+                    dice_total = dice5total()
+                    if dice_total <= 15:
+                        if player1stay == 0:
+                            p1card_6 = random.randint(1, 4)
+                        if dealerstay == 0:
+                            dcard_6 = random.randint(1, 4)
+                    elif dice_total >= 20:
+                        if player1stay == 0:
+                            p1card_6 = random.randint(10, 13)
+                        if dealerstay == 0:
+                            dcard_6 = random.randint(10,13)
+                    else:
+                        if player1stay == 0:
+                            p1card_6 = random.randint(5, 9)
+                        if dealerstay == 0:
+                            dcard_6 = random.randint(5, 9)
                                
                     p1card_total = p1card_totalfunc()
                     dcard_total = dcard_totalfunc()
@@ -184,23 +184,23 @@ while roundnm < rounds: # hoeveelheid rondes
                     if p1card_total > 23: # waneer moet de speler stoppen
                         player1stay = 1
                        
-                        if player1stay == 0 or dealerstay == 0: # kaart 7
-                            dice_total = dice5total()
-                            if dice_total <= 15:
-                                if player1stay == 0:    
-                                    p1card_7 = random.randint(1, 4)
-                                if dealerstay == 0:
-                                    dcard_7 = random.randint(1, 4)
-                            elif dice_total >= 20:
-                                if player1stay == 0:
-                                    p1card_7 = random.randint(10, 13)
-                                if dealerstay == 0:
-                                    dcard_7 = random.randint(10, 13)
-                            else:
-                                if player1stay == 0:
-                                    p1card_7 = random.randint(5, 9)
-                                if dealerstay == 0:
-                                    dcard_7 = random.randint(5, 9)
+                    if player1stay == 0 or dealerstay == 0: # kaart 7
+                        dice_total = dice5total()
+                        if dice_total <= 15:
+                            if player1stay == 0:    
+                                p1card_7 = random.randint(1, 4)
+                            if dealerstay == 0:
+                                dcard_7 = random.randint(1, 4)
+                        elif dice_total >= 20:
+                            if player1stay == 0:
+                                p1card_7 = random.randint(10, 13)
+                            if dealerstay == 0:
+                                dcard_7 = random.randint(10, 13)
+                        else:
+                            if player1stay == 0:
+                                p1card_7 = random.randint(5, 9)
+                            if dealerstay == 0:
+                                dcard_7 = random.randint(5, 9)
                                    
                         p1card_total = p1card_totalfunc()
                         dcard_total = dcard_totalfunc()
@@ -209,23 +209,23 @@ while roundnm < rounds: # hoeveelheid rondes
                         if p1card_total > 23: # waneer moet de speler stoppen
                             player1stay = 1
                        
-                            if player1stay == 0 or dealerstay == 0: # kaart 8
-                                dice_total = dice5total()
-                                if dice_total <= 15:
-                                    if player1stay == 0:
-                                        p1card_8 = random.randint(1, 4)
-                                    if dealerstay == 0:
-                                        dcard_8 = random.randint(1, 4)
-                                elif dice_total >= 20:
-                                    if player1stay == 0:
-                                        p1card_8 = random.randint(10, 13)
-                                    if dealerstay == 0:
-                                        dcard_8 = random.randint(10, 13)
-                                else:
-                                    if player1stay == 0:
-                                        p1card_8 = random.randint(5, 9)
-                                    if dealerstay == 0:
-                                        dcard_8 = random.randint(5, 9)
+                        if player1stay == 0 or dealerstay == 0: # kaart 8
+                            dice_total = dice5total()
+                            if dice_total <= 15:
+                                if player1stay == 0:
+                                     p1card_8 = random.randint(1, 4)
+                                if dealerstay == 0:
+                                    dcard_8 = random.randint(1, 4)
+                            elif dice_total >= 20:
+                                if player1stay == 0:
+                                    p1card_8 = random.randint(10, 13)
+                                if dealerstay == 0:
+                                    dcard_8 = random.randint(10, 13)
+                            else:
+                                if player1stay == 0:
+                                    p1card_8 = random.randint(5, 9)
+                                if dealerstay == 0:
+                                    dcard_8 = random.randint(5, 9)
                                        
                             p1card_total = p1card_totalfunc()
                             dcard_total = dcard_totalfunc()            
@@ -234,23 +234,23 @@ while roundnm < rounds: # hoeveelheid rondes
                             if p1card_total > 23: # waneer moet de speler stoppen
                                 player1stay = 1
                            
-                                if player1stay == 0 or dealerstay == 0: # kaart 9
-                                    dice_total = dice5total()
-                                    if dice_total <= 15:
-                                        if player1stay == 0:
-                                            p1card_9 = random.randint(1, 4)
-                                        if dealerstay == 0:
-                                            dcard_9 = random.randint(1, 4)
-                                    elif dice_total >= 20:
-                                        if player1stay == 0:
-                                            p1card_9 = random.randint(10, 13)
-                                        if dealerstay == 0:
-                                            dcard_9 = random.randint(10, 13)
-                                    else:
-                                        if player1stay == 0:
-                                            p1card_9 = random.randint(5, 9)
-                                        if dealerstay == 0:
-                                            dcard_9 = random.randint(5, 9)
+                            if player1stay == 0 or dealerstay == 0: # kaart 9
+                                dice_total = dice5total()
+                                if dice_total <= 15:
+                                    if player1stay == 0:
+                                        p1card_9 = random.randint(1, 4)
+                                    if dealerstay == 0:
+                                        dcard_9 = random.randint(1, 4)
+                                elif dice_total >= 20:
+                                    if player1stay == 0:
+                                        p1card_9 = random.randint(10, 13)
+                                    if dealerstay == 0:
+                                         dcard_9 = random.randint(10, 13)
+                                else:
+                                    if player1stay == 0:
+                                        p1card_9 = random.randint(5, 9)
+                                    if dealerstay == 0:
+                                        dcard_9 = random.randint(5, 9)
                                            
                                 p1card_total = p1card_totalfunc()
                                 dcard_total = dcard_totalfunc()            
@@ -259,23 +259,23 @@ while roundnm < rounds: # hoeveelheid rondes
                                 if p1card_total > 23: # waneer moet de speler stoppen
                                     player1stay = 1
                                
-                                    if player1stay == 0 or dealerstay == 0: # kaart 10
-                                        dice_total = dice5total()
-                                        if dice_total <= 15:
-                                            if player1stay == 0:
-                                                p1card_10 = random.randint(1, 4)
-                                            if dealerstay == 0:
-                                                dcard_10 = random.randint(1, 4)
-                                        elif dice_total >= 20:
-                                            if player1stay == 0:
-                                                p1card_10 = random.randint(10, 13)
-                                            if dealerstay == 0:
-                                                dcard_10 = random.randint(10, 13)
-                                        else:
-                                            if player1stay == 0:
-                                                p1card_10 = random.randint(5, 9)
-                                            if dealerstay == 0:
-                                                dcard_10 = random.randint(5, 9)
+                                if player1stay == 0 or dealerstay == 0: # kaart 10
+                                    dice_total = dice5total()
+                                    if dice_total <= 15:
+                                        if player1stay == 0:
+                                            p1card_10 = random.randint(1, 4)
+                                        if dealerstay == 0:
+                                            dcard_10 = random.randint(1, 4)
+                                    elif dice_total >= 20:
+                                        if player1stay == 0:
+                                            p1card_10 = random.randint(10, 13)
+                                        if dealerstay == 0:
+                                            dcard_10 = random.randint(10, 13)
+                                    else:
+                                        if player1stay == 0:
+                                            p1card_10 = random.randint(5, 9)
+                                        if dealerstay == 0:
+                                            dcard_10 = random.randint(5, 9)
                                                
                                     p1card_total = p1card_totalfunc()
                                     dcard_total = dcard_totalfunc()
@@ -285,23 +285,23 @@ while roundnm < rounds: # hoeveelheid rondes
                                         player1stay = 1
                                    
                                            
-                                        if player1stay == 0 or dealerstay == 0: # kaart 11
-                                            dice_total = dice5total()
-                                            if dice_total <= 15:
-                                                if player1stay == 0:
-                                                    p1card_11 = random.randint(1, 4)
-                                                if dealerstay == 0:
-                                                    dcard_11 = random.randint(1, 4)
-                                            elif dice_total >= 20:
-                                                if player1stay == 0:
-                                                    p1card_11 = random.randint(10, 13)
-                                                if dealerstay == 0:
-                                                    dcard_11 = random.randint(10,13)
-                                            else:
-                                                if player1stay == 0:
-                                                    p1card_11 = random.randint(5, 9)
-                                                if dealerstay == 0:
-                                                    dcard_11 = random.randint(5, 9)
+                                    if player1stay == 0 or dealerstay == 0: # kaart 11
+                                        dice_total = dice5total()
+                                        if dice_total <= 15:
+                                            if player1stay == 0:
+                                                p1card_11 = random.randint(1, 4)
+                                            if dealerstay == 0:
+                                                dcard_11 = random.randint(1, 4)
+                                        elif dice_total >= 20:
+                                            if player1stay == 0:
+                                                p1card_11 = random.randint(10, 13)
+                                            if dealerstay == 0:
+                                                dcard_11 = random.randint(10,13)
+                                        else:
+                                            if player1stay == 0:
+                                                p1card_11 = random.randint(5, 9)
+                                            if dealerstay == 0:
+                                                dcard_11 = random.randint(5, 9)
                                                    
                                         p1card_total = p1card_totalfunc()
                                         dcard_total = dcard_totalfunc()            
@@ -311,23 +311,23 @@ while roundnm < rounds: # hoeveelheid rondes
                                             player1stay = 1
                                        
                                        
-                                            if player1stay == 0 or dealerstay == 0: # kaart 12
-                                                dice_total = dice5total()
-                                                if dice_total <= 15:
-                                                    if player1stay == 0:
-                                                        p1card_12 = random.randint(1, 4)
-                                                    if dealerstay == 0:
-                                                        dcard_12 = random.randint(1, 4)
-                                                elif dice_total >= 20:
-                                                    if player1stay == 0:
-                                                        p1card_12 = random.randint(10, 13)
-                                                    if dealerstay == 0:
-                                                        p1dcard_12 = random.randint(10, 13)
-                                                else:
-                                                    if player1stay == 0:
-                                                        p1card_12 = random.randint(5, 9)
-                                                    if dealerstay == 0:
-                                                        dcard_12 = random.randint(5, 9)
+                                        if player1stay == 0 or dealerstay == 0: # kaart 12
+                                            dice_total = dice5total()
+                                            if dice_total <= 15:
+                                                if player1stay == 0:
+                                                    p1card_12 = random.randint(1, 4)
+                                                if dealerstay == 0:
+                                                    dcard_12 = random.randint(1, 4)
+                                            elif dice_total >= 20:
+                                                if player1stay == 0:
+                                                    p1card_12 = random.randint(10, 13)
+                                                if dealerstay == 0:
+                                                    p1dcard_12 = random.randint(10, 13)
+                                            else:
+                                                if player1stay == 0:
+                                                    p1card_12 = random.randint(5, 9)
+                                                if dealerstay == 0:
+                                                    dcard_12 = random.randint(5, 9)
    
     p1card_total = p1card_totalfunc() # kaarten totaal speler 1
     dcard_total = dcard_totalfunc() # kaarten totaal dealer
