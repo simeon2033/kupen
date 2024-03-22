@@ -15,7 +15,7 @@ pushpercentage = 0
 roundtest = 0
 diagnostic = 0
 player2active = False
-rounds = 1
+rounds = 10000
 roundtest = pushcounter + dealerwincounter + player1wincounter
 
 def dice5total(): # 5 dobbelstenen functie
