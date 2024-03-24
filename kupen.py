@@ -13,7 +13,8 @@ player2winpercentage = 0
 dealerbustcounter = 0
 dealerkupocounter = 0
 dealerkupercounter = 0
-dealerwincounter = 0
+dealerwincounterfrp1 = 0
+dealerwincounterfrp2 = 0
 dealerwinpercentage = 0
 p1pushcounter = 0
 p2pushcounter = 0
@@ -27,7 +28,7 @@ player2money = 0
 player2inzet = 10
 player2active = True
 rounds = 10000
-roundtest = p1pushcounter + dealerwincounter + player1wincounter + p2pushcounter
+roundtest = p1pushcounter + dealerwincounterfrp1 + dealerwincounterfrp2 + player1wincounter + p2pushcounter
 
 def dice5total(): # 5 dobbelstenen functie
     return random.randint(1,6) + random.randint(1,6) + random.randint(1,6) + random.randint(1,6) + random.randint(1,6)
@@ -750,7 +751,7 @@ while roundnm < rounds: # hoeveelheid rondes
         p1pushcounter = p1pushcounter + 1
     elif dealerwinfrp1 == 1 and player1lost == 1:
         print("Dealer Wins from player 1!")
-        dealerwincounter = dealerwincounter + 1
+        dealerwincounterfrp1 = dealerwincounterfrp1 + 1
     elif player1win == 1 and dealerlostfrp1 == 1:
         print("Player 1 Wins!")
         player1wincounter = player1wincounter + 1
@@ -760,7 +761,7 @@ while roundnm < rounds: # hoeveelheid rondes
             p2pushcounter = p2pushcounter + 1
         elif dealerwinfrp2 == 1 and player2lost == 1:
             print("Dealer Wins from player 2!")
-            dealerwincounter = dealerwincounter + 1
+            dealerwincounterfrp2 = dealerwincounterfrp2 + 1
         elif player2win == 1 and dealerlostfrp2 == 1:
             print("Player 2 Wins!")
             player2wincounter = player2wincounter + 1
@@ -770,13 +771,11 @@ p1pushpercentage = round(p1pushcounter / rounds * 100, 2) # percentages uitreken
 p2pushpercentage = round(p2pushcounter / rounds * 100, 2)
 player1winpercentage = round(player1wincounter / rounds * 100, 2)
 player2winpercentage = round(player2wincounter / rounds * 100, 2)
-if player2active == False:
-    dealerwinpercentage = round(dealerwincounter / rounds * 100, 2)
-if player2active == True:
-    dealerwinpercentage = round(dealerwincounter / rounds * 50)
+dealerwinpercentagefrp1 = round(dealerwincounterfrp1 / rounds * 100, 2)
+dealerwinpercentagefrp2 = round(dealerwincounterfrp2 / rounds * 100, 2)
 p1lossperround = player1money / rounds
 p2lossperround = player2money / rounds
-roundtest = player1wincounter + dealerwincounter + p1pushcounter + p2pushcounter
+roundtest = player1wincounter + dealerwincounterfrp1 + dealerwincounterfrp2 + p1pushcounter + p2pushcounter
 print("")
 print("Player1bustcounter:", player1bustcounter)
 print("Player1kupocounter:", player1kupocounter)
@@ -796,7 +795,9 @@ print("Player 1 Wins:", player1wincounter)
 if player2active == True:
     print("p2pushcounter:", p2pushcounter)
     print("Player 2 Wins:", player2wincounter)
-print("Dealer Wins:", dealerwincounter)
+print("Dealer Wins from player 1:", dealerwincounterfrp1)
+if player2active == True:
+    print("Dealer Wins from Player 2:", dealerwincounterfrp2)
 print("")
 print("")
 print("p1pushpercentage", p1pushpercentage,"%")
@@ -804,7 +805,9 @@ print("Player1winpercentage", player1winpercentage,"%")
 if player2active == True:
     print("p2pushpercentage:", p2pushpercentage,"%")
     print("Player2winpercentage", player2winpercentage,"%")
-print("Dealerwinpercentage", dealerwinpercentage,"%")
+print("Dealerwinpercentage from p1:", dealerwinpercentagefrp1,"%")
+if player2active == True:
+    print("Dealerwinpercentage from p2:", dealerwinpercentagefrp2,"%")
 print("")
 print("")
 print("player1money:", player1money)
