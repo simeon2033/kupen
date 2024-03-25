@@ -475,31 +475,27 @@ while roundnm < rounds: # hoeveelheid rondes
         dealerwinfrp1 = 1
         dealerwinfrp2 = 1
         player1lost = 1
-    if player1win == 1 and dealerlostfrp1 == 1 and dealerwinfrp1 == 1 and player1lost == 1:
-        pushp1 = 1
-    if player2win == 1 and dealerlostfrp2 == 1 and dealerwinfrp2 == 1 and player2lost == 1:
-        pushp2
     if p1card_1 + p1card_2 == 14: # checken of speler 1 Kuper heeft
         print("Kuper player 1")
         player1kupercounter = player1kupercounter + 1
         player1money = player1money - player1inzet
         player1lost = 1
         dealerwinfrp1 = 1
-    if p2card_1 + p1card_2 == 14: # checken of speler 2 Kuper heeft
+    if p2card_1 + p2card_2 == 14: # checken of speler 2 Kuper heeft
         print("Kuper player 2")
         player2kupercounter = player2kupercounter + 1
         player2money = player2money - player2inzet
         player2lost = 1
         dealerwinfrp2 = 1
-    if dcard_1 + dcard_2 == 14 and dealerwinfrp1 == 0 or dealerwinfrp2 == 0: # checken of dealer Kuper heeft
+    if dcard_1 + dcard_2 == 14 and (dealerwinfrp1 == 0 or dealerwinfrp2 == 0): # checken of dealer Kuper heeft
         print("Kuper dealer")
         dealerkupercounter = dealerkupercounter + 1
         player1money = player1money + player1inzet * 0.25
         dealerlostfrp1 = 1
-        dealerlostfrp2
         player1win = 1
         if player2active == True:
             player2win = 1
+            dealerlostfrp2 = 1
     if p1card_total > 26: # checken of speler 1 bust is
         print("bust player 1")
         player1bustcounter = player1bustcounter + 1
@@ -516,13 +512,15 @@ while roundnm < rounds: # hoeveelheid rondes
         print("bust dealer")
         dealerbustcounter = dealerbustcounter + 1
         player1money = player1money + player1inzet * 0.25
-        if player2active == True:
+        if player2active == True and dealerwinfrp2 == 0:
             player2money = player2money + player2inzet * 0.25
-        dealerlostfrp1 = 1
-        dealerwinfrp2 = 1
-        player1win = 1
-        if player2active == True:
+            dealerwinfrp2 = 1
             player2win = 1
+        if dealerwinfrp1 == 0:
+            dealerlostfrp1 = 1
+            player1win = 1
+        
+            
     if player2active == False and dealerlostfrp1 == 0 and dealerwinfrp1 == 0 and player1win == 0 and player1lost == 0: # wat gebeurt er als niemand kuper, kupo heeft of bust is
         if p1card_total < 14 and dcard_total < 14: # checken wie er verder van 14 af zit
             if 14 - p1card_total < 14 - dcard_total:
@@ -765,7 +763,10 @@ while roundnm < rounds: # hoeveelheid rondes
                 dealerwinfrp1 = 1
                 dealerwinfrp2 = 1
         
-       
+    if player1win == 1 and dealerlostfrp1 == 1 and dealerwinfrp1 == 1 and player1lost == 1:
+        pushp1 = 1
+    if player2win == 1 and dealerlostfrp2 == 1 and dealerwinfrp2 == 1 and player2lost == 1:
+        pushp2
     #wie wint?
     # hier ff 2 speler wincheck inplementeren
     if pushp1 == 1:
