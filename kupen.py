@@ -528,7 +528,6 @@ while roundnm < rounds: # hoeveelheid rondes
             elif 14 - p1card_total < 14 - dcard_total:
                 dealerwin = 1
                 player1lostfrp1 = 1
-
             else:
                 pushp1 = 1
         elif p1card_total > 14 and dcard_total > 14:
@@ -538,7 +537,6 @@ while roundnm < rounds: # hoeveelheid rondes
             elif p1card_total - 14 < dcard_total - 14:
                 dealerwinfrp1 = 1
                 player1lost = 1
-
             else:
                 pushp1 = 1
         elif p1card_total > 14 and dcard_total < 14:
@@ -548,7 +546,6 @@ while roundnm < rounds: # hoeveelheid rondes
             elif p1card_total - 14 < 14 - dcard_total:
                 dealerwinfrp1 = 1
                 player1lost = 1
-
             else:
                 pushp1 = 1
         elif p1card_total < 14 and dcard_total > 14:
@@ -558,7 +555,6 @@ while roundnm < rounds: # hoeveelheid rondes
             elif 14 - p1card_total < dcard_total - 14:
                 dealerwinfrp1 = 1
                 player1lost = 1
-
             else:
                 pushp1 = 1
         elif p1card_total == 14:
