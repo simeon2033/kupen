@@ -13,14 +13,18 @@ player2winpercentage = 0
 dealerbustcounter = 0
 dealerkupocounter = 0
 dealerkupercounter = 0
-dealerwincounter = 0
+dealerwincounterfrp1 = 0
+dealerwincounterfrp2 = 0
 dealerwinpercentage = 0
 p1pushcounter = 0
 p2pushcounter = 0
 p1pushpercentage = 0
 p2pushpercentage = 0
+p1pushcounter = 0
+p2pushcounter = 0
+p1pushpercentage = 0
+p2pushpercentage = 0
 roundtest = 0
-diagnostic = 0
 player1money = 0
 player1inzet = 10
 player2money = 0
@@ -32,10 +36,10 @@ roundtest = p1pushcounter + dealerwincounter + player1wincounter + p2pushcounter
 def dice5total(): # 5 dobbelstenen functie
     return random.randint(1,6) + random.randint(1,6) + random.randint(1,6) + random.randint(1,6) + random.randint(1,6)
 
-def p1card_totalfunc(): # kaarten totaal speler
+def p1card_totalfunc(): # kaarten totaal speler 1
     return p1card_1 + p1card_2 + p1card_3 + p1card_4 + p1card_5 + p1card_6 + p1card_7 + p1card_8 + p1card_9 + p1card_10 + p1card_11 + p1card_12
 
-def p2card_totalfunc(): # kaarten totaal speler
+def p2card_totalfunc(): # kaarten totaal speler 2
     return p2card_1 + p2card_2 + p2card_3 + p2card_4 + p2card_5 + p2card_6 + p2card_7 + p2card_8 + p2card_9 + p2card_10 + p2card_11 + p2card_12
 
 def dcard_totalfunc(): # kaarten totaal dealer
@@ -54,7 +58,13 @@ while roundnm < rounds: # hoeveelheid rondes
     dealerlostfrp2 = 0
     dealerwinfrp1 = 0
     dealerwinfrp2 = 0
+    dealerlostfrp1 = 0
+    dealerlostfrp2 = 0
+    dealerwinfrp1 = 0
+    dealerwinfrp2 = 0
     dealerstay = 0
+    pushp1 = 0
+    pushp2 = 0
     pushp1 = 0
     pushp2 = 0
    
@@ -78,18 +88,20 @@ while roundnm < rounds: # hoeveelheid rondes
     p1card_total = p1card_totalfunc()
     p2card_total = p2card_totalfunc()
     dcard_total = dcard_totalfunc()
-    if dcard_1 < 4 and dcard_1 < p1card_1: # wanneer moet de dealer stoppen
+    if dcard_1 < 4 and (dcard_1 < p1card_1 or dcard_1 < p2card_1): # wanneer moet de dealer stoppen
         dealerstay = 1
     if p1card_1 < 4 and p1card_1 < dcard_1: # waneer moet de speler stoppen
         player1stay = 1
+    if p2card_1 < 4 and p2card_1 < dcard_1: # waneer moet de speler stoppen
+        player2stay = 1
    
-    if p1card_1 != 1 and dcard_1 != 1: # kaart 2
+    if (p1card_1 != 1 and dcard_1 != 1) or (p2card_1 != 1 and dcard_1 != 1): # kaart 2
         dice_total = dice5total()
         if dice_total <= 15:
             if player1stay == 0:
                 p1card_2 = random.randint(1, 4)
-                if player2active == True and player2stay == 0:
-                    p2card_2 = random.randint(1, 4)
+            if player2active == True and player2stay == 0:
+                p2card_2 = random.randint(1, 4)
             if dealerstay == 0:
                 dcard_2 = random.randint(1, 4)
         elif dice_total >= 20:
@@ -112,10 +124,12 @@ while roundnm < rounds: # hoeveelheid rondes
         dcard_total = dcard_totalfunc()
         if p1card_total > 26 or dcard_total > 23 and dcard_total > p1card_total: # wanneer moet de dealer stoppen
             dealerstay = 1
-        if p1card_total > 23: # waneer moet de speler stoppen
+        if p1card_total > 23: # waneer moet de speler 1 stoppen
             player1stay = 1
+        if p2card_total > 23: # waneer moet speler 2 stoppen
+            player2stay = 1
     
-        if player1stay == 0 or dealerstay == 0: # kaart 3
+        if player1stay == 0 or dealerstay == 0 or player2stay == 0: # kaart 3
             dice_total = dice5total()
             if dice_total <= 15:
                 if player1stay == 0:
@@ -146,8 +160,10 @@ while roundnm < rounds: # hoeveelheid rondes
                 dealerstay = 1
             if p1card_total > 23: # waneer moet de speler stoppen
                 player1stay = 1
+            if p2card_total > 23: # waneer moet speler 2 stoppen
+                player2stay = 1
         
-            if player1stay == 0 or dealerstay == 0: # kaart 4
+            if player1stay == 0 or dealerstay == 0 or player2stay == 0: # kaart 4
                 dice_total = dice5total()
                 if dice_total <= 15:
                     if player1stay == 0:
@@ -178,8 +194,10 @@ while roundnm < rounds: # hoeveelheid rondes
                     dealerstay = 1
                 if p1card_total > 23: # waneer moet de speler stoppen
                     player1stay = 1
+                if p2card_total > 23: # waneer moet speler 2 stoppen
+                    player2stay = 1
             
-                if player1stay == 0 or dealerstay == 0: # kaart 5
+                if player1stay == 0 or dealerstay == 0 or player2stay == 0: # kaart 5
                     dice_total = dice5total()
                     if dice_total <= 15:
                         if player1stay == 0:
@@ -210,8 +228,10 @@ while roundnm < rounds: # hoeveelheid rondes
                         dealerstay = 1
                     if p1card_total > 23: # waneer moet de speler stoppen
                         player1stay = 1
+                    if p2card_total > 23: # waneer moet speler 2 stoppen
+                        player2stay = 1
                 
-                    if player1stay == 0 or dealerstay == 0: # kaart 6
+                    if player1stay == 0 or dealerstay == 0 or player2stay == 0: # kaart 6
                         dice_total = dice5total()
                         if dice_total <= 15:
                             if player1stay == 0:
@@ -242,8 +262,10 @@ while roundnm < rounds: # hoeveelheid rondes
                             dealerstay = 1
                         if p1card_total > 23: # waneer moet de speler stoppen
                             player1stay = 1
+                        if p2card_total > 23: # waneer moet speler 2 stoppen
+                            player2stay = 1
                         
-                        if player1stay == 0 or dealerstay == 0: # kaart 7
+                        if player1stay == 0 or dealerstay == 0 or player2stay == 0: # kaart 7
                             dice_total = dice5total()
                             if dice_total <= 15:
                                 if player1stay == 0:    
@@ -274,8 +296,10 @@ while roundnm < rounds: # hoeveelheid rondes
                                 dealerstay = 1
                             if p1card_total > 23: # waneer moet de speler stoppen
                                 player1stay = 1
+                            if p2card_total > 23: # waneer moet speler 2 stoppen
+                                player2stay = 1
                         
-                            if player1stay == 0 or dealerstay == 0: # kaart 8
+                            if player1stay == 0 or dealerstay == 0 or player2stay == 0: # kaart 8
                                 dice_total = dice5total()
                                 if dice_total <= 15:
                                     if player1stay == 0:
@@ -306,8 +330,10 @@ while roundnm < rounds: # hoeveelheid rondes
                                     dealerstay = 1
                                 if p1card_total > 23: # waneer moet de speler stoppen
                                     player1stay = 1
+                                if p2card_total > 23: # waneer moet speler 2 stoppen
+                                    player2stay = 1
                             
-                                if player1stay == 0 or dealerstay == 0: # kaart 9
+                                if player1stay == 0 or dealerstay == 0 or player2stay == 0: # kaart 9
                                     dice_total = dice5total()
                                     if dice_total <= 15:
                                         if player1stay == 0:
@@ -338,8 +364,10 @@ while roundnm < rounds: # hoeveelheid rondes
                                         dealerstay = 1
                                     if p1card_total > 23: # waneer moet de speler stoppen
                                         player1stay = 1
+                                    if p2card_total > 23: # waneer moet speler 2 stoppen
+                                        player2stay = 1
                                 
-                                    if player1stay == 0 or dealerstay == 0: # kaart 10
+                                    if player1stay == 0 or dealerstay == 0 or player2stay == 0: # kaart 10
                                         dice_total = dice5total()
                                         if dice_total <= 15:
                                             if player1stay == 0:
@@ -370,8 +398,10 @@ while roundnm < rounds: # hoeveelheid rondes
                                             dealerstay = 1
                                         if p1card_total > 23: # waneer moet de speler stoppen
                                             player1stay = 1
+                                        if p2card_total > 23: # waneer moet speler 2 stoppen
+                                            player2stay = 1
 
-                                        if player1stay == 0 or dealerstay == 0: # kaart 11
+                                        if player1stay == 0 or dealerstay == 0 or player2stay == 0: # kaart 11
                                             dice_total = dice5total()
                                             if dice_total <= 15:
                                                 if player1stay == 0:
@@ -402,9 +432,11 @@ while roundnm < rounds: # hoeveelheid rondes
                                                 dealerstay = 1
                                             if p1card_total > 23: # waneer moet de speler stoppen
                                                 player1stay = 1
+                                            if p2card_total > 23: # waneer moet speler 2 stoppen
+                                                player2stay = 1
                                         
                                         
-                                            if player1stay == 0 or dealerstay == 0: # kaart 12
+                                            if player1stay == 0 or dealerstay == 0 or player2stay == 0: # kaart 12
                                                 dice_total = dice5total()
                                                 if dice_total <= 15:
                                                     if player1stay == 0:
@@ -434,19 +466,23 @@ while roundnm < rounds: # hoeveelheid rondes
    
     #wat gebeurt er bij deze uitkomsten
     if p1card_1 == 1 or p1card_1 + p1card_2 == 26: # checken of speler 1 kupo heeft
-        print("kupo player 1")
+        if winoutput == True:
+            print("kupo player 1")
         player1kupocounter = player1kupocounter + 1
         player1money = player1money + player1inzet * 0.75
         player1win = 1
         dealerlostfrp1 = 1
     if p2card_1 == 1 or p2card_1 + p2card_2 == 26: # checken of speler 2 kupo heeft
-        print("kupo player 2")
+        if winoutput == True:
+            print("kupo player 2")
         player2kupocounter = player2kupocounter + 1
         player2money = player2money + player2inzet * 0.75
         player2win = 1
         dealerlostfrp2 = 1
+        dealerlostfrp2 = 1
     if dcard_1 == 1 or dcard_1 + dcard_2 == 26: # checken of dealer kupo heeft
-        print("kupo dealer")
+        if winoutput == True:
+            print("kupo dealer")
         dealerkupocounter = dealerkupocounter + 1
         player1money = player1money - player1inzet
         dealerwinfrp1 = 1
@@ -459,7 +495,6 @@ while roundnm < rounds: # hoeveelheid rondes
     if p1card_1 + p1card_2 == 14: # checken of speler 1 Kuper heeft
         print("Kuper player 1")
         player1kupercounter = player1kupercounter + 1
-        player1money = player1money - player1inzet
         player1lost = 1
         dealerwinfrp1 = 1
     if p2card_1 + p1card_2 == 14: # checken of speler 2 Kuper heeft
@@ -480,7 +515,6 @@ while roundnm < rounds: # hoeveelheid rondes
     if p1card_total > 26: # checken of speler 1 bust is
         print("bust player 1")
         player1bustcounter = player1bustcounter + 1
-        player1money = player1money - player1inzet
         player1lost = 1
         dealerwinfrp1 = 1
     if p2card_total > 26: # checken of speler 2 bust is
@@ -768,6 +802,8 @@ while roundnm < rounds: # hoeveelheid rondes
 #conclusies/output
 p1pushpercentage = round(p1pushcounter / rounds * 100, 2) # percentages uitrekenen
 p2pushpercentage = round(p2pushcounter / rounds * 100, 2)
+p1pushpercentage = round(p1pushcounter / rounds * 100, 2) # percentages uitrekenen
+p2pushpercentage = round(p2pushcounter / rounds * 100, 2)
 player1winpercentage = round(player1wincounter / rounds * 100, 2)
 player2winpercentage = round(player2wincounter / rounds * 100, 2)
 dealerwinpercentage = round(dealerwincounter / rounds * 100, 2)
@@ -784,10 +820,17 @@ if player2active == True:
     print("Player2kupocounter:", player2kupocounter)
     print("Player2kupercounter:", player2kupercounter)
     print("")
+print("")
+if player2active == True:
+    print("Player2bustcounter:", player2bustcounter)
+    print("Player2kupocounter:", player2kupocounter)
+    print("Player2kupercounter:", player2kupercounter)
+    print("")
 print("Dealerbustcounter:", dealerbustcounter)
 print("Dealerkupocounter:", dealerkupocounter)
 print("Dealerkupercounter:", dealerkupercounter)
 print("")
+print("p1pushcounter:", p1pushcounter)
 print("p1pushcounter:", p1pushcounter)
 print("Player 1 Wins:", player1wincounter)
 if player2active == True:
@@ -796,6 +839,7 @@ if player2active == True:
 print("Dealer Wins:", dealerwincounter)
 print("")
 print("")
+print("p1pushpercentage", p1pushpercentage,"%")
 print("p1pushpercentage", p1pushpercentage,"%")
 print("Player1winpercentage", player1winpercentage,"%")
 if player2active == True:
@@ -836,6 +880,11 @@ if diagnostic == 1: # extra outputs voor troubleshooting
     print("dcard_5", dcard_5)
     print("dealerstay", dealerstay)
     print("dcard_total", dcard_total)
+    print("dealerwinfrp1:", dealerwinfrp1)
+    print("dealerlostfrp1:", dealerlostfrp1)
+    if player2active == True:
+        print("dealerwinfrp2:", dealerwinfrp2)
+        print("dealerlostfrp2:", dealerlostfrp2)
     print("dealerwinfrp1:", dealerwinfrp1)
     print("dealerlostfrp1:", dealerlostfrp1)
     if player2active == True:
