@@ -21,13 +21,14 @@ p2pushcounter = 0
 p1pushpercentage = 0
 p2pushpercentage = 0
 roundtest = 0
-diagnostic = 0
 player1money = 0
 player1inzet = 10
 player2money = 0
 player2inzet = 10
 player2active = True
-rounds = 1000000
+diagnostic = False
+winoutput = False
+rounds = 10000000
 roundtest = p1pushcounter + dealerwincounterfrp1 + dealerwincounterfrp2 + player1wincounter + p2pushcounter
 
 def dice5total(): # 5 dobbelstenen functie
@@ -457,17 +458,20 @@ while roundnm < rounds: # hoeveelheid rondes
    
     #wat gebeurt er bij deze uitkomsten
     if p1card_1 == 1 or p1card_1 + p1card_2 == 26: # checken of speler 1 kupo heeft
-        print("kupo player 1")
+        if winoutput == True:
+            print("kupo player 1")
         player1kupocounter = player1kupocounter + 1
         player1win = 1
         dealerlostfrp1 = 1
     if p2card_1 == 1 or p2card_1 + p2card_2 == 26: # checken of speler 2 kupo heeft
-        print("kupo player 2")
+        if winoutput == True:
+            print("kupo player 2")
         player2kupocounter = player2kupocounter + 1
         player2win = 1
         dealerlostfrp2 = 1
     if dcard_1 == 1 or dcard_1 + dcard_2 == 26: # checken of dealer kupo heeft
-        print("kupo dealer")
+        if winoutput == True:
+            print("kupo dealer")
         dealerkupocounter = dealerkupocounter + 1
         dealerwinfrp1 = 1
         player1lost = 1
@@ -479,17 +483,20 @@ while roundnm < rounds: # hoeveelheid rondes
     if ((dcard_1 == 1 or dcard_1 + dcard_2 == 26) and (p2card_1 == 1 or p2card_1 + p2card_2 == 26)) and player2active == True:
         pushp2 = 1
     if p1card_1 + p1card_2 == 14: # checken of speler 1 Kuper heeft
-        print("Kuper player 1")
+        if winoutput == True:
+            print("Kuper player 1")
         player1kupercounter = player1kupercounter + 1
         player1lost = 1
         dealerwinfrp1 = 1
     if p2card_1 + p2card_2 == 14: # checken of speler 2 Kuper heeft
-        print("Kuper player 2")
+        if winoutput == True:
+            print("Kuper player 2")
         player2kupercounter = player2kupercounter + 1
         player2lost = 1
         dealerwinfrp2 = 1
     if dcard_1 + dcard_2 == 14 and (dealerwinfrp1 == 0 or dealerwinfrp2 == 0): # checken of dealer Kuper heeft
-        print("Kuper dealer")
+        if winoutput == True:
+            print("Kuper dealer")
         dealerkupercounter = dealerkupercounter + 1
         dealerlostfrp1 = 1
         player1win = 1
@@ -501,17 +508,20 @@ while roundnm < rounds: # hoeveelheid rondes
     if player2active == True and ((dcard_1 + dcard_2 == 14 and (dealerwinfrp1 == 0 or dealerwinfrp2 == 0)) and p2card_1 + p2card_2 == 14):
         pushp2 = 1
     if p1card_total > 26: # checken of speler 1 bust is
-        print("bust player 1")
+        if winoutput == True:
+            print("bust player 1")
         player1bustcounter = player1bustcounter + 1
         player1lost = 1
         dealerwinfrp1 = 1
     if p2card_total > 26: # checken of speler 2 bust is
-        print("bust player 2")
+        if winoutput == True:
+            print("bust player 2")
         player2bustcounter = player2bustcounter + 1
         player2lost = 1
         dealerwinfrp2 = 1
     if dcard_total > 26: # checken of dealer bust is
-        print("bust dealer")
+        if winoutput == True:
+            print("bust dealer")
         dealerbustcounter = dealerbustcounter + 1
         if player2active == True and player2lost == 0:
             dealerlostfrp2 = 1
@@ -720,26 +730,32 @@ while roundnm < rounds: # hoeveelheid rondes
                 pushp2 = 1
     #wie wint?
     if pushp1 == 1:
-        print("pushp1")
+        if winoutput == True:
+            print("pushp1")
         p1pushcounter = p1pushcounter + 1
     elif dealerwinfrp1 == 1 and player1lost == 1:
-        print("Dealer Wins from player 1!")
+        if winoutput == True:
+            print("Dealer Wins from player 1!")
         dealerwincounterfrp1 = dealerwincounterfrp1 + 1
         player1money = player1money - player1inzet
     elif player1win == 1 and dealerlostfrp1 == 1:
-        print("Player 1 Wins!")
+        if winoutput == True:
+            print("Player 1 Wins!")
         player1wincounter = player1wincounter + 1
         player1money = player1money + player1inzet * 1
     if player2active == True:
         if pushp2 == 1:
-            print("pushp2")
+            if winoutput == True:
+                print("pushp2")
             p2pushcounter = p2pushcounter + 1
         elif dealerwinfrp2 == 1 and player2lost == 1:
-            print("Dealer Wins from player 2!")
+            if winoutput == True:
+                print("Dealer Wins from player 2!")
             dealerwincounterfrp2 = dealerwincounterfrp2 + 1
             player2money = player2money - player2inzet
         elif player2win == 1 and dealerlostfrp2 == 1:
-            print("Player 2 Wins!")
+            if winoutput == True:
+                print("Player 2 Wins!")
             player2wincounter = player2wincounter + 1
             player2money = player2money + player2inzet * 1
 
@@ -792,7 +808,7 @@ print("average loss per round p1", p1lossperround)
 if player2active == True:
     print("player2money:", player2money)
     print("average loss per round p2", p2lossperround)
-if diagnostic == 1: # extra outputs voor troubleshooting
+if diagnostic == True: # extra outputs voor troubleshooting
     print("p1card_1", p1card_1)
     print("p1card_2", p1card_2)
     print("p1card_3", p1card_3)
