@@ -29,10 +29,12 @@ player1money = 0
 player1inzet = 10
 player2money = 0
 player2inzet = 10
+normalwinmultiplier = 2
+kupokuperwinmultiplier = 4
 player2active = True
 diagnostic = False
 winoutput = False
-rounds = 100000
+rounds = 10000000
 roundtest = p1pushcounter + dealerwincounterfrp1 + dealerwincounterfrp2 + player1wincounter + p2pushcounter
 
 def dice5total(): # 5 dobbelstenen functie
@@ -49,6 +51,9 @@ def dcard_totalfunc(): # kaarten totaal dealer
 
 while roundnm < rounds: # hoeveelheid rondes
     roundnm = roundnm + 1 # variabelen naar 0 aan het begin van elke ronde
+    player1money = player1money - player1inzet
+    if player2active == True:
+        player2money = player2money - player2inzet
     p1card_1 = p1card_2 = p1card_3 = p1card_4 = p1card_5 = p1card_6 = p1card_7 = p1card_8 = p1card_9 = p1card_10 = p1card_11 = p1card_12 = p2card_1 = p2card_2 = p2card_3 = p2card_4 = p2card_5 = p2card_6 = p2card_7 = p2card_8 = p2card_9 = p2card_10 = p2card_11 = p2card_12 = dcard_1 = dcard_2 = dcard_3 = dcard_4 = dcard_5 = dcard_6 = dcard_7 = dcard_8 = dcard_9 = dcard_10 = dcard_11 = dcard_12 = 0
     aantal1en = aantal2en = aantal3en = aantal4en = aantal5en = aantal6en = aantal7en = aantal8en = aantal9en = aantal10en = aantal11en = aantal12en = aantal13en = 4
     player1stay = 0
@@ -1421,8 +1426,12 @@ while roundnm < rounds: # hoeveelheid rondes
             player2lost = 1
     if (dcard_1 == 1 or dcard_1 + dcard_2 == 26) and (p1card_1 == 1 or p1card_1 + p1card_2 == 26):
         pushp1 = 1
+    elif p1card_1 == 1 or p1card_1 + p1card_2 == 26:
+        player1money = player1money + player1inzet * (kupokuperwinmultiplier - normalwinmultiplier)
     if ((dcard_1 == 1 or dcard_1 + dcard_2 == 26) and (p2card_1 == 1 or p2card_1 + p2card_2 == 26)) and player2active == True:
         pushp2 = 1
+    elif p2card_1 == 1 or p2card_1 + p2card_2 == 26:
+        player2money = player2money + player2inzet * (kupokuperwinmultiplier - normalwinmultiplier)
     if p1card_1 + p1card_2 == 14: # checken of speler 1 Kuper heeft
         if winoutput == True:
             print("Kuper player 1")
@@ -1446,8 +1455,12 @@ while roundnm < rounds: # hoeveelheid rondes
             dealerlostfrp2 = 1
     if (dcard_1 + dcard_2 == 14 and (dealerwinfrp1 == 0 or dealerwinfrp2 == 0)) and p1card_1 + p1card_2 == 14:
         pushp1 = 1
+    elif dcard_1 + dcard_2 == 14 and (dealerwinfrp1 == 0 or dealerwinfrp2 == 0):
+        player1money = player1money + player1inzet * (kupokuperwinmultiplier - normalwinmultiplier)
     if player2active == True and ((dcard_1 + dcard_2 == 14 and (dealerwinfrp1 == 0 or dealerwinfrp2 == 0)) and p2card_1 + p2card_2 == 14):
         pushp2 = 1
+    elif dcard_1 + dcard_2 == 14 and (dealerwinfrp1 == 0 or dealerwinfrp2 == 0):
+        player2money = player2money + player2inzet * (kupokuperwinmultiplier - normalwinmultiplier)
     if p1card_total > 26: # checken of speler 1 bust is
         if winoutput == True:
             print("bust player 1")
@@ -1674,31 +1687,31 @@ while roundnm < rounds: # hoeveelheid rondes
         if winoutput == True:
             print("pushp1")
         p1pushcounter = p1pushcounter + 1
+        player1money = player1money + player1inzet
     elif dealerwinfrp1 == 1 and player1lost == 1:
         if winoutput == True:
             print("Dealer Wins from player 1!")
         dealerwincounterfrp1 = dealerwincounterfrp1 + 1
-        player1money = player1money - player1inzet
     elif player1win == 1 and dealerlostfrp1 == 1:
         if winoutput == True:
             print("Player 1 Wins!")
         player1wincounter = player1wincounter + 1
-        player1money = player1money + player1inzet * 1
+        player1money = player1money + player1inzet * normalwinmultiplier
     if player2active == True:
         if pushp2 == 1:
             if winoutput == True:
                 print("pushp2")
             p2pushcounter = p2pushcounter + 1
+            player2money = player2money + player2inzet
         elif dealerwinfrp2 == 1 and player2lost == 1:
             if winoutput == True:
                 print("Dealer Wins from player 2!")
             dealerwincounterfrp2 = dealerwincounterfrp2 + 1
-            player2money = player2money - player2inzet
         elif player2win == 1 and dealerlostfrp2 == 1:
             if winoutput == True:
                 print("Player 2 Wins!")
             player2wincounter = player2wincounter + 1
-            player2money = player2money + player2inzet * 1
+            player2money = player2money + player2inzet * normalwinmultiplier
 
 #conclusies/output
 p1pushpercentage = round(p1pushcounter / rounds * 100, 2) # percentages uitrekenen
