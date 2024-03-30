@@ -31,10 +31,10 @@ player2money = 0
 player2inzet = 10
 normalwinmultiplier = 2
 kupokuperwinmultiplier = 4
-player2active = True
+player2active = False
 diagnostic = False
-winoutput = False
-rounds = 1000000
+winoutput = True
+another = 1
 roundtest = p1pushcounter + dealerwincounterfrp1 + dealerwincounterfrp2 + player1wincounter + p2pushcounter
 
 def dice5total(): # 5 dobbelstenen functie
@@ -49,7 +49,8 @@ def p2card_totalfunc(): # kaarten totaal speler 2
 def dcard_totalfunc(): # kaarten totaal dealer
     return dcard_1 + dcard_2 + dcard_3 + dcard_4 + dcard_5 + dcard_6 + dcard_7 + dcard_8 + dcard_9 + dcard_10 + dcard_11 + dcard_12
 
-while roundnm < rounds: # hoeveelheid rondes
+while another == 1: # hoeveelheid rondes
+    another = 0
     roundnm = roundnm + 1 # variabelen naar 0 aan het begin van elke ronde
     player1money = player1money - player1inzet
     if player2active == True:
@@ -170,8 +171,13 @@ while roundnm < rounds: # hoeveelheid rondes
     dcard_total = dcard_totalfunc()
     if dcard_1 < 4 and (dcard_1 < p1card_1 or dcard_1 < p2card_1): # wanneer moet de dealer stoppen
         dealerstay = 1
-    if p1card_1 < 4 and p1card_1 < dcard_1: # waneer moet de speler stoppen
-        player1stay = 1
+    print("card total:", p1card_total)
+    repeat = 1
+    while repeat == 1 and player1stay == 0:
+        repeat = 0
+        player1stay = int(input("press 1 to stay, press 0 to continue"))
+        if player1stay != 1 and player1stay != 0:
+            repeat = 1
     if p2card_1 < 4 and p2card_1 < dcard_1: # waneer moet de speler stoppen
         player2stay = 1
    
@@ -282,8 +288,13 @@ while roundnm < rounds: # hoeveelheid rondes
         dcard_total = dcard_totalfunc()
         if dcard_total > 23 and (dcard_total > p1card_total or (dcard_total > p2card_total and p2card_1 != 0)): # wanneer moet de dealer stoppen
             dealerstay = 1
-        if p1card_total > 23: # waneer moet de speler 1 stoppen
-            player1stay = 1
+        print("card total:", p1card_total)
+        repeat = 1
+        while repeat == 1 and player1stay == 0:
+            repeat = 0
+            player1stay = int(input("press 1 to stay, press 0 to continue"))
+            if player1stay != 1 and player1stay != 0:
+                repeat = 1
         if p2card_total > 23: # waneer moet speler 2 stoppen
             player2stay = 1
     
@@ -394,8 +405,13 @@ while roundnm < rounds: # hoeveelheid rondes
             dcard_total = dcard_totalfunc()
             if dcard_total > 23 and (dcard_total > p1card_total or (dcard_total > p2card_total and p2card_1 != 0)): # wanneer moet de dealer stoppen
                 dealerstay = 1
-            if p1card_total > 23: # waneer moet de speler stoppen
-                player1stay = 1
+            print("card total:", p1card_total)
+            repeat = 1
+            while repeat == 1 and player1stay == 0:
+                repeat = 0
+                player1stay = int(input("press 1 to stay, press 0 to continue"))
+                if player1stay != 1 and player1stay != 0:
+                    repeat = 1
             if p2card_total > 23: # waneer moet speler 2 stoppen
                 player2stay = 1
         
@@ -506,8 +522,13 @@ while roundnm < rounds: # hoeveelheid rondes
                 dcard_total = dcard_totalfunc()
                 if dcard_total > 23 and (dcard_total > p1card_total or (dcard_total > p2card_total and p2card_1 != 0)): # wanneer moet de dealer stoppen
                     dealerstay = 1
-                if p1card_total > 23: # waneer moet de speler stoppen
-                    player1stay = 1
+                print("card total:", p1card_total)
+                repeat = 1
+                while repeat == 1 and player1stay == 0:
+                    repeat = 0
+                    player1stay = int(input("press 1 to stay, press 0 to continue"))
+                    if player1stay != 1 and player1stay != 0:
+                        repeat = 1
                 if p2card_total > 23: # waneer moet speler 2 stoppen
                     player2stay = 1
             
@@ -618,8 +639,13 @@ while roundnm < rounds: # hoeveelheid rondes
                     dcard_total = dcard_totalfunc()
                     if dcard_total > 23 and (dcard_total > p1card_total or (dcard_total > p2card_total and p2card_1 != 0)): # wanneer moet de dealer stoppen
                         dealerstay = 1
-                    if p1card_total > 23: # waneer moet de speler stoppen
-                        player1stay = 1
+                    print("card total:", p1card_total)
+                    repeat = 1
+                    while repeat == 1 and player1stay == 0:
+                        repeat = 0
+                        player1stay = int(input("press 1 to stay, press 0 to continue"))
+                        if player1stay != 1 and player1stay != 0:
+                            repeat = 1
                     if p2card_total > 23: # waneer moet speler 2 stoppen
                         player2stay = 1
                 
@@ -730,8 +756,13 @@ while roundnm < rounds: # hoeveelheid rondes
                         dcard_total = dcard_totalfunc()
                         if dcard_total > 23 and (dcard_total > p1card_total or (dcard_total > p2card_total and p2card_1 != 0)): # wanneer moet de dealer stoppen
                             dealerstay = 1
-                        if p1card_total > 23: # waneer moet de speler stoppen
-                            player1stay = 1
+                        print("card total:", p1card_total)
+                        repeat = 1
+                        while repeat == 1 and player1stay == 0:
+                            repeat = 0
+                            player1stay = int(input("press 1 to stay, press 0 to continue"))
+                            if player1stay != 1 and player1stay != 0:
+                                repeat = 1
                         if p2card_total > 23: # waneer moet speler 2 stoppen
                             player2stay = 1
                         
@@ -842,8 +873,13 @@ while roundnm < rounds: # hoeveelheid rondes
                             dcard_total = dcard_totalfunc()
                             if dcard_total > 23 and (dcard_total > p1card_total or (dcard_total > p2card_total and p2card_1 != 0)): # wanneer moet de dealer stoppen
                                 dealerstay = 1
-                            if p1card_total > 23: # waneer moet de speler stoppen
-                                player1stay = 1
+                            print("card total:", p1card_total)
+                            repeat = 1
+                            while repeat == 1 and player1stay == 0:
+                                repeat = 0
+                                player1stay = int(input("press 1 to stay, press 0 to continue"))
+                                if player1stay != 1 and player1stay != 0:
+                                    repeat = 1
                             if p2card_total > 23: # waneer moet speler 2 stoppen
                                 player2stay = 1
                         
@@ -954,8 +990,13 @@ while roundnm < rounds: # hoeveelheid rondes
                                 dcard_total = dcard_totalfunc()            
                                 if dcard_total > 23 and (dcard_total > p1card_total or (dcard_total > p2card_total and p2card_1 != 0)): # wanneer moet de dealer stoppen
                                     dealerstay = 1
-                                if p1card_total > 23: # waneer moet de speler stoppen
-                                    player1stay = 1
+                                print("card total:", p1card_total)
+                                repeat = 1
+                                while repeat == 1 and player1stay == 0:
+                                    repeat = 0
+                                    player1stay = int(input("press 1 to stay, press 0 to continue"))
+                                    if player1stay != 1 and player1stay != 0:
+                                        repeat = 1
                                 if p2card_total > 23: # waneer moet speler 2 stoppen
                                     player2stay = 1
                             
@@ -1066,8 +1107,13 @@ while roundnm < rounds: # hoeveelheid rondes
                                     dcard_total = dcard_totalfunc()            
                                     if dcard_total > 23 and (dcard_total > p1card_total or (dcard_total > p2card_total and p2card_1 != 0)): # wanneer moet de dealer stoppen
                                         dealerstay = 1
-                                    if p1card_total > 23: # waneer moet de speler stoppen
-                                        player1stay = 1
+                                    print("card total:", p1card_total)
+                                    repeat = 1
+                                    while repeat == 1 and player1stay == 0:
+                                        repeat = 0
+                                        player1stay = int(input("press 1 to stay, press 0 to continue"))
+                                        if player1stay != 1 and player1stay != 0:
+                                            repeat = 1
                                     if p2card_total > 23: # waneer moet speler 2 stoppen
                                         player2stay = 1
                                 
@@ -1178,8 +1224,13 @@ while roundnm < rounds: # hoeveelheid rondes
                                         dcard_total = dcard_totalfunc()
                                         if dcard_total > 23 and (dcard_total > p1card_total or (dcard_total > p2card_total and p2card_1 != 0)): # wanneer moet de dealer stoppen
                                             dealerstay = 1
-                                        if p1card_total > 23: # waneer moet de speler stoppen
-                                            player1stay = 1
+                                        print("card total:", p1card_total)
+                                        repeat = 1
+                                        while repeat == 1 and player1stay == 0:
+                                            repeat = 0
+                                            player1stay = int(input("press 1 to stay, press 0 to continue"))
+                                            if player1stay != 1 and player1stay != 0:
+                                                repeat = 1
                                         if p2card_total > 23: # waneer moet speler 2 stoppen
                                             player2stay = 1
 
@@ -1290,8 +1341,13 @@ while roundnm < rounds: # hoeveelheid rondes
                                             dcard_total = dcard_totalfunc()            
                                             if dcard_total > 23 and (dcard_total > p1card_total or (dcard_total > p2card_total and p2card_1 != 0)): # wanneer moet de dealer stoppen
                                                 dealerstay = 1
-                                            if p1card_total > 23: # waneer moet de speler stoppen
-                                                player1stay = 1
+                                            print("card total:", p1card_total)
+                                            repeat = 1
+                                            while repeat == 1 and player1stay == 0:
+                                                repeat = 0
+                                                player1stay = int(input("press 1 to stay, press 0 to continue"))
+                                                if player1stay != 1 and player1stay != 0:
+                                                    repeat = 1
                                             if p2card_total > 23: # waneer moet speler 2 stoppen
                                                 player2stay = 1
                                         
@@ -1712,16 +1768,17 @@ while roundnm < rounds: # hoeveelheid rondes
                 print("Player 2 Wins!")
             player2wincounter = player2wincounter + 1
             player2money = player2money + player2inzet * normalwinmultiplier
+    another = int(input("press 1 to play again"))
 
 #conclusies/output
-p1pushpercentage = round(p1pushcounter / rounds * 100, 2) # percentages uitrekenen
-p2pushpercentage = round(p2pushcounter / rounds * 100, 2)
-player1winpercentage = round(player1wincounter / rounds * 100, 2)
-player2winpercentage = round(player2wincounter / rounds * 100, 2)
-dealerwinpercentagefrp1 = round(dealerwincounterfrp1 / rounds * 100, 2)
-dealerwinpercentagefrp2 = round(dealerwincounterfrp2 / rounds * 100, 2)
-p1lossperround = player1money / rounds
-p2lossperround = player2money / rounds
+p1pushpercentage = round(p1pushcounter / roundnm * 100, 2) # percentages uitrekenen
+p2pushpercentage = round(p2pushcounter / roundnm * 100, 2)
+player1winpercentage = round(player1wincounter / roundnm * 100, 2)
+player2winpercentage = round(player2wincounter / roundnm * 100, 2)
+dealerwinpercentagefrp1 = round(dealerwincounterfrp1 / roundnm * 100, 2)
+dealerwinpercentagefrp2 = round(dealerwincounterfrp2 / roundnm * 100, 2)
+p1lossperround = player1money / roundnm
+p2lossperround = player2money / roundnm
 roundtest = player1wincounter + dealerwincounterfrp1 + p1pushcounter
 print("")
 print("Player1bustcounter:", player1bustcounter)
