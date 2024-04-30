@@ -34,7 +34,7 @@ kupokuperwinmultiplier = 4
 player2active = True # dit geeft aan of speler 2 meedoet
 diagnostic = False # geeft aan of ik diagnostische data wil om dingen te fixen
 winoutput = False # geeft aan of ik elke keer dat iemand wint een output wil
-rounds = 1000000 # geeft het aantal te simuleren rondes aan
+rounds = 100000 # geeft het aantal te simuleren rondes aan
 roundtest = p1pushcounter + dealerwincounterfrp1 + dealerwincounterfrp2 + player1wincounter + p2pushcounter
 
 def dice5total(): # deze functie rolt de 5 dobbelstenen
